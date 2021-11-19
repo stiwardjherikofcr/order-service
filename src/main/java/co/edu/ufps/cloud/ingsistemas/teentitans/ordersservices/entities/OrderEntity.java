@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "tbl_orders")
+@Table(name = "orders")
 @Data
 public class OrderEntity {
 
@@ -15,6 +15,7 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column(name = "customer")
     private Long customerId;
 
     @Column(name = "create_at")
@@ -25,7 +26,7 @@ public class OrderEntity {
 
     @NotNull()
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "paymentmethod_id")
+    @JoinColumn(name = "payment_method_id")
     private PaymentMethodEntity paymentMethod;
 
     private boolean status;
